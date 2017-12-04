@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using microsoft_aspnet_core_tutorials_web_api_vsc.Models;
 
 namespace microsoft_aspnet_core_tutorials_web_api_vsc
 {
@@ -23,6 +25,7 @@ namespace microsoft_aspnet_core_tutorials_web_api_vsc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
             services.AddMvc();
         }
 
